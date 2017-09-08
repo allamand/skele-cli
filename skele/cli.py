@@ -37,6 +37,6 @@ def main():
         if hasattr(skele.commands, k) and v:
             module = getattr(skele.commands, k)
             skele.commands = getmembers(module, isclass)
-            command = [command[1] for command in skele.commands if command[0] != 'Base'][0]
+            command = [command[1] for command in gli.commands if command[0].lower() == k.lower()][0]
             command = command(options)
             command.run()
